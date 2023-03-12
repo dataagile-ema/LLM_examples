@@ -29,7 +29,7 @@ def update_text_with_example():
     print ("in updated")
     st.session_state.text_input = "Hur många grisar finns det på gården? Är mångare än trä?"
 
-st.button("*Visa exempel text*", help="Klicka för att se exmpel på text som kan rättas.", on_click=update_text_with_example)
+st.button("*Visa text-exempel*", help="Klicka för att se exmpel på text som kan rättas.", on_click=update_text_with_example)
 
 st.markdown("### Din rättade text:")
 
