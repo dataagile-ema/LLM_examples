@@ -6,8 +6,8 @@ template = """
     Nedan är en text som kan ha felstavade ord, ord som saknas eller grammatiska fel.
     Din uppgift är att:
     - Ge en text där felen är rättade. Om det inte finns några av ovan listade fel, gör inga ändringar.
-    - Efter texten, skriv en punktlista med alla rättningar som gjordes och varför de gjordes.
-    - Om texten inte innehåller någon begriplig text, skriv: "Jag förstår tyvärr inte." och skriv inga rättningar.
+    - Efter texten, skriv en punktlista med alla ändringar som gjordes och varför de gjordes.
+    - Om texten inte innehåller någon begriplig text, skriv: "Jag förstår tyvärr inte."
     - Ge svaret på {language}
 
     Below is the text and language:
