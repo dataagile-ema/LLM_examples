@@ -3,3 +3,4 @@ jsonschema==3.2
 protobuf~=3.19.0
 click==8.0.4
 langchain
+langchain.llms
