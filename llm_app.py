@@ -1,13 +1,13 @@
 
 import streamlit as st
-from LLM import load_LLM, hämta_rättat_text_och_förklaring
+from LLM import load_LLM, hämta_rättat_text_och_förklaring, template
 import os
 
 
 st.set_page_config(page_title="Rätta och förklara", page_icon=":robot:")
 st.header("Rätta och förklara skrivfel")
 
-st.markdown("Se vilka fel i stavning och grammatik en text har. Få den korrekta texten utskriven.")
+st.markdown("Se vilka fel i stavning och grammatik en text har. Få den korrekta texten utskriven. Appen använder Open AIs modell gpt-3.5-turbo.")
 st.markdown("## Skriv in text att rätta")
 
 
@@ -35,10 +35,10 @@ st.markdown("### Din rättade text:")
 
 
 if text_input:
-
     llm = load_LLM(openai_api_key=openai_api_key)
+    svar = hämta_rättat_text_och_förklaring(option_language, text_input, llm)
+    st.write(svar)
 
-    formatted_text = hämta_rättat_text_och_förklaring(option_language, text_input, llm)
 
-    st.write(formatted_text)
-
+with st.expander(label= "Se promptmall som appen använder", expanded=False):
+    st.text_area(label = "promptmall", value= template)
