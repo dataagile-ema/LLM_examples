@@ -5,10 +5,10 @@ import os
 
 
 st.set_page_config(page_title="Rätta och förklara", page_icon=":robot:")
-st.header("Rätta och förklara skrivfel")
+st.header("Hitta skrivfelen")
 
-st.markdown("Se vilka fel i stavning och grammatik en text har. Få den korrekta texten utskriven. Appen använder Open AI-modellen gpt-3.5-turbo.")
-st.markdown("## Skriv in text att rätta")
+st.markdown("AI-modellen hittar skrivfel och förklarar de ändringar som behöver göras i texten. Appen använder Open AI-modellen gpt-3.5-turbo.")
+st.markdown("#### Skriv in text att rätta")
 
 
 openai_api_key = os.getenv('API_KEY_OPEN_AI')
@@ -31,7 +31,7 @@ def update_text_with_example():
 
 st.button("*Visa text-exempel*", help="Klicka för att se exmpel på text som kan rättas.", on_click=update_text_with_example)
 
-st.markdown("### Din rättade text:")
+st.markdown("#### Den rättade texten:")
 
 
 if text_input:
