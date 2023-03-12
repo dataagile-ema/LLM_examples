@@ -1,0 +1,11 @@
+conda create --name llm_sl python=3.11
+conda activate llm_sl 
+pip3 install streamlit
+pip3 install protobuf~=3.19.0 --  pga kompabilitetsproblem med streamlit
+pip3 install click==8.0.4 --  pga kompabilitetsproblem med streamlit
+pip3 install langchain
+
+-- Sätt miljövariabel API_KEY_OPEN_AI. I windos 11 - sök på Redigera systemsts miljövariabler
+-- Sätt API_KEY_OPEN_AI som användarvariabel
+
+
