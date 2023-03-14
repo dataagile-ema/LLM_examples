@@ -42,3 +42,5 @@ if text_input:
 
 with st.expander(label= "Se promptmall som appen använder", expanded=False):
     st.text_area(label = "promptmall", value= template)
+
+st.markdown('![Tick](https://shields-io-visitor-counter.herokuapp.com/badge?page=https://dataagile-ema-llm-examples-llm-app-drtt1h.streamlit.app/&label=Tick&labelColor=000000&logo=GitHub&logoColor=FFFFFF&color=1D70B8&style=for-the-badge)')
