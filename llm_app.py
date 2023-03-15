@@ -1,35 +1,37 @@
-
 import streamlit as st
 from LLM import load_LLM, hämta_rättat_text_och_förklaring, template
 import os
 
+
+if 'text_input' not in st.session_state:
+    st.session_state['text_input'] = ""
+
+
+if 'kor' not in st.session_state:
+    st.session_state['kor'] = 'False'
+
+
 openai_api_key = os.getenv('API_KEY_OPEN_AI')
 llm = load_LLM(openai_api_key=openai_api_key)
-    
+
 st.set_page_config(page_title="Rätta och förklara", page_icon=":robot:")
 st.header("Hitta skrivfelen")
 
 st.markdown("AI-modellen hittar skrivfel och förklarar de ändringar som behöver göras i texten. Appen använder Open AI-modellen gpt-3.5-turbo.")
 st.markdown("#### Skriv in text att rätta")
 
-if 'kor_ratta_text' not in st.session_state:
-    st.session_state['kor_ratta_text'] = False
-
-if 'text_input' not in st.session_state:
-    st.session_state['text_input'] = ""
-
 option_language = 'Swedish'
 
 def update_text_with_example():
     st.session_state.text_input = "Vill du ha äppla? Är du större än mig?"
     text_input_x = st.session_state.text_input
-    st.session_state.kor_ratta_text = True
+    st.session_state.kor = "True"
 
 
 text_input_ta = st.text_area(label="",  placeholder="Din text...", key="text_input")
 
 def rattatext():
-    st.session_state.kor_ratta_text = True
+    st.session_state.kor = "True"
     st.session_state.text_input = text_input_ta
 
 col1, col2 = st.columns(2)
@@ -41,18 +43,20 @@ with col2:
 
 
 st.markdown("#### Den rättade texten:")
-if st.session_state.kor_ratta_text == True:
-    l = len(st.session_state.text_input.split(" "))
-    if l > 100:
-        st.write("Texten behöver vara kortare")
-        st.stop()
-    if len(st.session_state.text_input) == 0:
-        st.write("Skriv en text i textrutan")
-        st.stop()
-        
-    with st.spinner(text="In progress..."):
-        svar = hämta_rättat_text_och_förklaring(option_language, st.session_state.text_input, llm)
-    st.write(svar)
+
+if 'kor' in st.session_state:
+    if st.session_state.kor == "True":
+        l = len(st.session_state.text_input.split(" "))
+        if l > 100:
+            st.write("Texten behöver vara kortare")
+            st.stop()
+        if len(st.session_state.text_input) == 0:
+            st.write("Skriv en text i textrutan")
+            st.stop()
+            
+        with st.spinner(text="In progress..."):
+            svar = hämta_rättat_text_och_förklaring(option_language, st.session_state.text_input, llm)
+        st.write(svar)
 
 
 with st.expander(label= "Se promptmall som appen använder", expanded=False):
